@@ -1,4 +1,4 @@
-# GFG-Problems
+# GFG-Problems Array Operations
 class Solution {
   public:
     int arrayOperations(int n, vector<int> &arr) {
