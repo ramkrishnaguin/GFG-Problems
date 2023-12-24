@@ -1,0 +1,19 @@
+from typing import List
+import heapq
+
+class Solution:
+    def buyMaximumProducts(self, n : int, k : int, price : List[int]) -> int:
+        heap = []
+        ans = 0
+        
+        for i in range(n):
+            heapq.heappush(heap, (price[i], i+1))
+            
+        while heap and k > 0:
+            min_price, stocks = heapq.heappop(heap)
+            buy = min(k // min_price, stocks)
+            
+            ans += buy
+            k -= buy * min_price
+        
+        return ans
