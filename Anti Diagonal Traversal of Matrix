@@ -1,0 +1,19 @@
+vector<int> ans;
+        int n = matrix.size();
+        
+        vector<bool> v(n, false);
+        vector<vector<bool>> ourMatrix(n, v);
+        
+        for(int i = 0; i < n; i++) {
+            for(int j = 0; j < n; j++) {
+                if(ourMatrix[i][j] == false) {
+                    int a = i, b = j;
+                    while(a < n && b >= 0) {
+                        ourMatrix[a][b] = true;
+                        ans.push_back(matrix[a][b]);
+                        a++; b--;
+                    } 
+                }
+            }
+        }
+        return ans;
