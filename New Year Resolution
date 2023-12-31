@@ -1,0 +1,13 @@
+class Solution {
+    public:
+    bool f(int *arr ,int n,int i,int s)
+    {
+        if(s!=0 && (s%20==0 || s%24==0 || s==2024))return true;
+        if(i>=n) return false;
+        return (f(arr,n,i+1,s+arr[i])||f(arr,n,i+1,s));
+    }
+    int isPossible(int N , int coins[]) 
+    {
+        return f(coins,N,0,0);
+    }
+};
