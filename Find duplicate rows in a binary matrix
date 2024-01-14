@@ -1,0 +1,12 @@
+class Solution:
+    def repeatedRows(self, arr, m ,n):
+        #code here
+        res = []
+        uni = []
+        
+        for i,j in enumerate(arr):
+            if j in uni:
+                res.append(i)
+            else:
+                uni.append(j)
+        return res
