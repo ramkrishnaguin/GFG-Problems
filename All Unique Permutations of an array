@@ -1,0 +1,20 @@
+class Solution:
+    def uniquePerms(self, arr, n):
+        # code here 
+        ans=set()
+        def pre(s,i):
+            if(i>=len(arr)):
+                ans.add(tuple(s))
+                return
+            for j in range(i,n):
+                s[i],s[j]=s[j],s[i]
+                pre(s,i+1)
+                s[i],s[j]=s[j],s[i]
+            
+        s=arr
+        pre(s,0)
+        new=[]
+        for i in ans:
+            new.append(list(i))
+        new.sort()
+        return new
