@@ -1,0 +1,16 @@
+class Solution:
+    def printPaths(self, root, sum):
+        #code here
+        given_sum = sum
+        res = []
+        def dfs(root, path, total):
+            if root:
+                if root.data + total == given_sum:
+                    res.append(path + [root.data])
+                dfs(root.left, path+[root.data], root.data+total)
+                dfs(root.right, path+[root.data], root.data+total)
+            return
+        
+        path = []
+        dfs(root, path, 0)
+        return res
