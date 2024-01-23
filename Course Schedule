@@ -1,0 +1,22 @@
+def dfs(p,path):
+            for j in adj[p]:
+                if j in path:
+                    return False
+                elif j not in visited:
+                    visited.add(j)
+                    if not(dfs(j,path+[j])):
+                        return False
+            ans.append(p)
+            return True
+            
+        adj=[[] for _ in range(n)]
+        for i in prerequisites:
+            adj[i[1]].append(i[0])
+        visited=set()
+        ans=[]
+        for i in range(n):
+            if i not in visited:
+                visited.add(i)
+                if not(dfs(i,[i])):
+                    return []
+        return ans[::-1]
