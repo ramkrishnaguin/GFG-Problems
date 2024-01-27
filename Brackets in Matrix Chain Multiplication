@@ -1,0 +1,26 @@
+INV = 10**9+7
+class Solution:
+   def matrixChainOrder(self, p, n):
+       if n==2: return 'A'
+       
+       dp = [ [0]*(n-1) for _ in range(n+1) ]  # row: tuple len; col: start idx; value: min mul times
+       cut = [ [-1]*(n-1) for _ in range(n+1) ]
+       
+       for L in range(3, n+1):
+           for si in range(n-L+1):
+               minval, cp = INV, INV
+               for mi in range(si+1, si+L-1):
+                   mv = p[si]*p[mi]*p[si+L-1] + dp[mi-si+1][si] + dp[si+L-mi][mi]
+                   if mv < minval:
+                       minval, cp = mv, mi
+               dp[L][si] = minval
+               cut[L][si] = cp
+               
+       def _trace(L, si):
+           if L==3: return "({}{})".format(chr(65+si), chr(66+si))
+           v = cut[L][si]
+           if v==si+1:     return "({}{})".format(chr(65+si), _trace(L-1, si+1))
+           elif v==si+L-2: return "({}{})".format(_trace(L-1, si), chr(65+v))
+           else:           return "({}{})".format(_trace(v-si+1, si), _trace(si+L-v, v)) 
+               
+       return _trace(n, 0)
