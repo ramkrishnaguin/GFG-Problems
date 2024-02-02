@@ -1,0 +1,18 @@
+class Solution:
+    # your task is to complete this function
+    # function should return an integer
+    def atoi(self,s):
+        # Code here
+        if not s:
+            return -1
+
+        # Check if the first character is '-' and the rest are numeric
+        if s[0] == '-':
+            if len(s) > 1 and s[1:].isdigit():
+                return int(s)
+            else:
+                return -1
+        elif s.isdigit():
+            return int(s)
+        else:
+            return -1
