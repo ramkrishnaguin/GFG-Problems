@@ -1,0 +1,21 @@
+class Solution:
+    def reverseList(self,head):
+        prev=None
+        while head!=None:
+            next_node=head.next
+            head.next=prev
+            prev=head
+            head=next_node
+        return prev
+    def decimalValue(self, head):
+        MOD=10**9+7
+        # Code here
+        new_head=self.reverseList(head)
+        i=0
+        ans=0
+        while new_head!=None:
+            ans+=(2**i)*new_head.data
+            ans=ans%MOD
+            i+=1
+            new_head=new_head.next
+        return ans%MOD
