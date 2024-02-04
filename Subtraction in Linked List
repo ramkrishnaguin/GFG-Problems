@@ -1,0 +1,11 @@
+L1=''
+        L2=''
+        while l1:
+            L1+=str(l1.data)
+            l1=l1.next
+        while l2:
+            L2+=str(l2.data)
+            l2=l2.next
+        x=int(L1)
+        y=int(L2)
+        return Node(abs(x-y))
