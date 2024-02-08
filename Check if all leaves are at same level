@@ -1,0 +1,18 @@
+class Solution:
+    #Your task is to complete this function
+    #function should return True/False or 1/0
+    def check(self, root):
+        #Code here
+        def levelLeaves(root,d,lvl):
+            if not root:
+                return True
+            if root.left is None and root.right is None and lvl not in d:
+                d[lvl]=[root.data]
+            elif root.left is None and root.right is None and lvl in d:
+                d[lvl].append(root.data)
+            else:
+                levelLeaves(root.left,d,lvl+1)
+                levelLeaves(root.right,d,lvl+1)
+            return True if len(d)==1 else False
+        d={}
+        return levelLeaves(root,d,0)
