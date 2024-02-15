@@ -1,0 +1,4 @@
+class Solution:
+	def isPossible(self, paths):
+		# Code here
+		return int(all(sum(path)%2==0 for path in paths))
