@@ -1,0 +1,15 @@
+class Solution:
+    def flattenBST(self, root):
+        # code here
+        import sys
+        sys.setrecursionlimit(10**6)
+        head = Node(0)
+        def walk(node, head):
+            if not node:
+                return head
+            left, right = node.left, node.right
+            node.left = node.right = None
+            walk(left, head).right = node
+            return walk(right, node)
+        walk(root, head)
+        return head.right
