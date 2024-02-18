@@ -1,0 +1,25 @@
+#User function Template for python3
+
+##Structure of node
+'''
+class Node:
+    def __init__(self, data=0):
+        self.data=0
+        self.left=None
+        self.right=None
+'''
+
+class Solution:
+    def sumOfLeafNodes(self, root):
+        #Your code here
+        def dfs(node):
+            nonlocal soln
+            if not node:
+                return
+            if not node.left and not node.right:
+                soln += node.data
+            dfs(node.left)
+            dfs(node.right)
+        soln = 0
+        dfs(root)
+        return soln
