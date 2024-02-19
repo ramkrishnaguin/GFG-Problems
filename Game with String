@@ -1,0 +1,11 @@
+class Solution:
+    def minValue(self, s, k):
+        # code here
+        freq={}
+        for char in s:
+            freq[char]=freq.get(char,0)+1
+        values=list(freq.values())
+        for i in range(k):
+            val=values.index(max(values))
+            values[val]-=1
+        return sum([i**2 for i in values])
