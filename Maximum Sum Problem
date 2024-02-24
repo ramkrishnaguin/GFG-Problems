@@ -1,0 +1,9 @@
+class Solution:
+    def maxSum(self, n): 
+        # code here 
+        def k(n):
+            if n>=12:
+                return k(n//2)+k(n//3)+k(n//4)
+            else:
+                return n
+        return k(n)
