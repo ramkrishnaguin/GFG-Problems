@@ -1,0 +1,11 @@
+class Solution:
+
+	def printLargest(self, n, arr):
+	    # code here
+	    def comparison(a, b):
+            if a+b < b+a:
+                return 1
+            else:
+                return -1
+        arr.sort(key=functools.cmp_to_key(comparison))
+        return "".join(map(str, arr))
