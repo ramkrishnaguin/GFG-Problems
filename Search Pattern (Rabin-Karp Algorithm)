@@ -1,0 +1,25 @@
+class Solution:
+    def search(self, pattern, text):
+        # code here
+        result=[]
+        p=len(pattern)
+        t=len(text)
+        base=26
+        h=1
+        prime=11
+        for i in range(p-1):
+            h=(h*base)%prime
+        hp,ht=0,0
+        for i in range(p):
+            hp=(hp*26+ord(pattern[i]))%prime
+            ht=(ht*26+ord(text[i]))%prime
+        for i in range(t-p+1):
+            if hp==ht:
+                for j in range(p):
+                    if pattern[j]!=text[i+j]:
+                        break
+                else:
+                    result.append(i+1)
+            if i<t-p:
+                ht=((ht-ord(text[i])*h)*base+ord(text[i+p]))%prime
+        return result
