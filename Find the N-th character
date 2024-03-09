@@ -1,0 +1,19 @@
+class Solution:
+    def nthCharacter(self, s, r, n):
+        # code here
+        def concat(a, b):
+            nonlocal r
+            n = 2**(r-1)
+            while n > 0:
+                n //= 2
+                a, b = a+b, b+a
+            return a
+        
+        m = {"1": concat("1", "0"), "0": concat("0", "1")}
+        
+        for e in s:
+            c = m[e]
+            if n < len(c):
+                return c[n]
+            n -= len(c)
+        return "0"
