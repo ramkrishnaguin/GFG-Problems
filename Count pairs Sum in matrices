@@ -1,0 +1,23 @@
+class Solution:
+	def countPairs(self, mat1, mat2, n, x):
+		# code here
+		lx,ly=0,0
+        rx,ry=n-1,n-1
+        result=0
+        while lx<n and rx>=0:
+            sum=mat1[lx][ly]+mat2[rx][ry]
+            if sum==x:
+                result+=1
+                ly+=1
+                ry-=1
+            elif sum<x:
+                ly+=1
+            else:
+                ry-=1
+            if ly>=n:
+                lx+=1
+                ly=0
+            if ry<0:
+                rx-=1
+                ry=n-1
+        return result
