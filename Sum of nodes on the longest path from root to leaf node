@@ -1,0 +1,20 @@
+class Solution:
+    def sumOfLongRootToLeafPath(self,root):
+        #code here
+        maxSum , longestPath = self.findLongestRootSum(root)
+        return maxSum
+        
+        
+    def findLongestRootSum(self,r):
+        if not r : return 0,0
+        s1, l1 = self.findLongestRootSum(r.left)
+        s2, l2 = self.findLongestRootSum(r.right)
+        l1+=1
+        l2+=1
+        s1+=r.data
+        s2+=r.data
+        if l1 >l2:  return s1, l1
+        elif l2 > l1 : return s2, l2
+        else:
+            if s1> s2 : return s1,l1
+            else : return s2, l2
