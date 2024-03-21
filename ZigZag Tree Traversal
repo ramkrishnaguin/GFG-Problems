@@ -1,0 +1,23 @@
+class Solution:
+    #Function to store the zig zag order traversal of tree in a list.
+    def zigZagTraversal(self, root):
+        # Your code here
+        q=[root]
+        res=[]
+        f=1
+        while q:
+            t=[]
+            r=[]
+            for i in q:
+                r.append(i.data)
+                if i.left:
+                    t.append(i.left)
+                if i.right:
+                    t.append(i.right)
+            q=t
+            if f:
+                res.extend(r)
+            else:
+                res.extend(r[::-1])
+            f=1-f
+        return res
