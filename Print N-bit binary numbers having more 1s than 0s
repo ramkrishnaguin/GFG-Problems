@@ -1,0 +1,21 @@
+class Solution:
+	def NBitBinary(self, n):
+		# code here
+		position = 0
+        # Initialize the list with an empty string and counts of 0s and 1s
+        binary_numbers = [["", 0, 0]]
+        
+        while position < n:
+            new_binary_numbers = []
+            # Iterate over each binary number in the list
+            for binary, count_0, len_of_binary in binary_numbers:
+                # Append '1' to the binary number and increment the count of 1s
+                new_binary_numbers.append([binary + "1", count_0, len_of_binary + 1])
+                # If the count of 0s is less than half the total length, append '0' and increment the count of 0s
+                if count_0 * 2 < len_of_binary:
+                    new_binary_numbers.append([binary + "0", count_0 + 1, len_of_binary + 1])
+            position += 1
+            binary_numbers = new_binary_numbers[:]
+        
+        # Return only the binary numbers without counts
+        return [binary for binary, _, _ in binary_numbers]
