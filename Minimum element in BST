@@ -1,0 +1,9 @@
+class Solution:
+    #Function to find the minimum element in the given BST.
+    def minValue(self, root):
+        ##Your code here
+        if root is None:
+            return None  
+        if root.left is None:
+            return root.data  
+        return self.minValue(root.left)
