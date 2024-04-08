@@ -1,0 +1,25 @@
+class Solution:
+    def optimalStrategyOfGame(self,n, arr):
+        # code here
+        from collections import namedtuple
+        
+        Score = namedtuple('Score', ['player', 'other'])
+        dp = [[None]*n for _ in range(n)]
+        
+        # dp[i][j] keep the player and apponent score from i to j inclusive 
+        # dp[i][j] = max(arr[i]+dp[i+1][j][1], arr[j]+dp[i][j-1][1])
+        
+        for i in range(n-1, -1, -1):
+            for j in range(i, n):
+                if i == j:
+                    dp[i][j] = Score(player=arr[i], other=0)
+                else:
+                    iv = arr[i]+dp[i+1][j].other
+                    jv = arr[j]+dp[i][j-1].other
+                    if iv > jv:
+                        dp[i][j] = Score(player=iv, other=dp[i+1][j].player)
+                    else:
+                        dp[i][j] = Score(player=jv, other=dp[i][j-1].player)
+
+
+        return dp[0][-1].player
