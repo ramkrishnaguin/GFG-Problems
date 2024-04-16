@@ -1,0 +1,27 @@
+from typing import List
+
+
+class Solution:
+    def minimizeDifference(self, n : int, k : int, arr : List[int]) -> int:
+        # code here
+        ans = float('inf')
+        maxi_l, mini_l, maxi_r, mini_r = [0] * n, [0] * n, [0] * n, [0] * n
+        maxi_l[0] = mini_l[0] = arr[0]
+        maxi_r[n - 1] = mini_r[n - 1] = arr[n - 1]
+        
+        for i in range(1, n - 1):
+            j = n - i - 1
+            maxi_l[i] = max(arr[i], maxi_l[i - 1])
+            mini_l[i] = min(arr[i], mini_l[i - 1])
+            maxi_r[j] = max(arr[j], maxi_r[j + 1])
+            mini_r[j] = min(arr[j], mini_r[j + 1])
+        
+        for i in range(k - 1, n):
+            j = i - k + 1
+            a = maxi_l[j - 1] if j > 0 else float('-inf')
+            b = maxi_r[i + 1] if i < n - 1 else float('-inf')
+            c = mini_l[j - 1] if j > 0 else float('inf')
+            d = mini_r[i + 1] if i < n - 1 else float('inf')
+            ans = min(ans, max(a, b) - min(c, d))
+        
+        return ans
