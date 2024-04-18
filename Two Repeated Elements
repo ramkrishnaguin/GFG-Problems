@@ -1,0 +1,13 @@
+class Solution:
+    
+    #Function to find two repeated elements.
+    def twoRepeated(self, arr , n):
+        #Your code here
+        array=[]
+        visit=set()
+        for i in range(len(arr)):
+            if(arr[i] not in visit):
+                visit.add(arr[i])
+            else:
+                array.append(arr[i])
+        return array
