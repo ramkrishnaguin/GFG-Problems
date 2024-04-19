@@ -1,0 +1,7 @@
+unordered_map<int, int> f;
+	    vector<int> v;
+	    
+	    for(int i{}; i < m; i++) ++f[b[i]];
+	    for(int i{}; i < n; i++) if(f[a[i]] <= 0) v.emplace_back(a[i]);
+	    
+	    return v;
