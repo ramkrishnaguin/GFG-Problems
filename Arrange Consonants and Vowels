@@ -1,0 +1,24 @@
+class Solution:
+    #Function to reverse a linked list.
+    def arrangeCV(self, head):
+        # Code here
+        if head is None:
+            return head
+        array = []
+        while head:
+            array.append(head.data)
+            head = head.next
+        vowel = []
+        consonants = []
+        for i in array:
+            if i in ['a', 'e', 'i', 'o', 'u']:
+                vowel.append(i)
+            else:
+                consonants.append(i)
+        result = vowel + consonants
+        result_list = None
+        for data in reversed(result):
+            new_node = Node(data)
+            new_node.next = result_list
+            result_list = new_node
+        return result_list
