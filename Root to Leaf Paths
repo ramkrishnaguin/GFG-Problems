@@ -1,0 +1,16 @@
+class Solution:
+    def Paths(self, root : Optional['Node']) -> List[List[int]]:
+        # code here
+        paths = []
+        
+        def generate_paths(node, current_path):
+            if node.left:
+                generate_paths(node.left, current_path+[node.data])
+            if node.right:
+                generate_paths(node.right, current_path+[node.data])
+            if not node.left and not node.right:
+                paths.append(current_path+[node.data])
+        
+        if root:
+            generate_paths(root,[])
+        return paths
