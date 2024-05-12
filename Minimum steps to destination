@@ -1,0 +1,8 @@
+class Solution:
+    def minSteps(self, d):
+        # code here
+        t, p = 0,0 
+        while p < d or (p - d) % 2 != 0:
+            t += 1
+            p += t
+        return t
