@@ -1,0 +1,4 @@
+class Solution:
+    def swapNibbles (self, n):
+        # code here 
+        return ((n & 0x0f) << 4 | (n & 0xf0) >> 4)
