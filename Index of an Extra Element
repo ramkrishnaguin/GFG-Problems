@@ -1,0 +1,5 @@
+class Solution:
+    def findExtra(self,n,a,b):
+        #add code here
+        s=sum(a)-sum(b)
+        return a.index(s)
