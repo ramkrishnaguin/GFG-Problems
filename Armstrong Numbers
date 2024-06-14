@@ -1,0 +1,16 @@
+class Solution:
+    def armstrongNumber (self, n):
+        # code here 
+        # Extract digits
+        d1 = n // 100       # Hundreds place digit
+        d2 = (n // 10) % 10 # Tens place digit
+        d3 = n % 10         # Units place digit
+        
+        # Compute sum of cubes of digits
+        sum_of_cubes = d1**3 + d2**3 + d3**3
+        
+        # Check if it's an Armstrong number
+        if sum_of_cubes == n:
+            return "Yes"
+        else:
+            return "No"
