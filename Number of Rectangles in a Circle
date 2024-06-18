@@ -1,0 +1,14 @@
+class Solution:
+    def rectanglesInCircle(self,r):
+        #code here
+        diameter = 2 * r
+        rectangle_count = 0
+        square_diameter = diameter * diameter
+        
+        for l in range(1, diameter):
+            for b in range(1, diameter):
+                diagonal = l * l + b * b
+                if diagonal <= square_diameter:
+                    rectangle_count += 1
+        
+        return rectangle_count
