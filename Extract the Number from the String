@@ -1,0 +1,10 @@
+class Solution:
+    def ExtractNumber(self,sentence):
+        #code here
+        l=sentence.split()
+        large_number=-1
+        for w in l:
+            if w[0]>='0'and w[0]<='9':
+                if not '9' in w:
+                    large_number=max(large_number, int(w))
+        return large_number
