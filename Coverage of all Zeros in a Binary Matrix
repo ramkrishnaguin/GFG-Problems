@@ -1,0 +1,20 @@
+class Solution:
+	def findCoverage(self, matrix):
+		# Code here
+		n=len(matrix)
+        total_cov=0
+        for i in range(n):
+            for j in range(len(matrix[i])):
+                if matrix[i][j]==0:
+                    coverage=0
+                    if j>0 and matrix[i][j-1]==1:
+                        coverage+=1
+                    if j<len(matrix[i])-1 and matrix[i][j+1]==1:
+                        coverage+=1
+                    if i>0 and matrix[i-1][j]==1:
+                        coverage+=1
+                        
+                    if i<n-1 and matrix[i+1][j]==1:
+                        coverage+=1
+                    total_cov+=coverage
+        return total_cov 
