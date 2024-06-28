@@ -1,0 +1,22 @@
+class Solution:
+    def pattern (self, arr):
+        # code here
+        def is_palin(nums):
+            for i in range(len(nums)//2):
+                if nums[i] != nums[-i-1]:
+                    return False
+            return True
+        
+        n = len(arr)
+        
+        for i in range(n):
+            if is_palin(arr[i]):
+                return "{} R".format(i)
+        
+        for i in range(n):
+            tmp = []
+            for j in range(n):
+                tmp.append(arr[j][i])
+            if is_palin(tmp):
+                return "{} C".format(i)
+        return -1
