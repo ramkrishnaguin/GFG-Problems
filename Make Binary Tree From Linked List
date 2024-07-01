@@ -1,0 +1,30 @@
+def convert(head):
+  
+    # code here
+    if not head:
+        return
+    if not head.next:
+        return Tree(head.data)
+    
+    # create tree root
+    root = Tree(head.data)
+    
+    # create queue for level order travelsar
+    q = [root]
+    
+    n = head.next
+    
+    # travel all linkedlist and add tree and as well as level order travelsar
+    while n is not None:
+        temp = q[0]
+        q.pop(0)
+        temp.left = Tree(n.data)
+        q.append(temp.left)
+        n = n.next
+        if n is None:
+            break
+        temp.right = Tree(n.data)
+        q.append(temp.right)
+        n = n.next
+        
+    return root
