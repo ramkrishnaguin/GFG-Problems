@@ -1,0 +1,21 @@
+class Solution:
+    def removeAllDuplicates(self, head):
+        #code here
+        dummy = Node(0)  #for safe end case
+        dummy.next = head
+        
+        prev = dummy 
+        current = head 
+        
+        while current:
+            has_duplicate = False
+            while current.next and current.data == current.next.data:
+                has_duplicate = True
+                current = current.next
+            
+            if has_duplicate:
+                prev.next = current.next
+            else:
+                prev = prev.next
+            current = current.next
+        return dummy.next
