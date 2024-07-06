@@ -1,0 +1,21 @@
+class Node:
+
+    def __init__(self, val):
+        self.right = None
+        self.data = val
+        self.left = None
+        self.next = None
+
+
+class Solution:
+
+    def populateNext(self, root):
+        def inorder(node, prev):
+            if not node:
+                return prev
+            prev = inorder(node.left, prev)
+            if prev:
+                prev.next = node
+            prev = node
+            return inorder(node.right, prev)
+        inorder(root, None)
