@@ -1,0 +1,16 @@
+class Solution:
+
+    def hasPathSum(self, root, target):
+        '''
+        :param root: root of given tree.
+        :param sm: root to leaf sum
+        :return: true or false
+        '''
+        # code here
+        def dfs(n, s):
+            if not n:
+                return False
+            if not n.left and not n.right and s+n.data == target:
+                return True
+            return dfs(n.left, s+n.data) or dfs(n.right, s+n.data)
+        return dfs(root, 0)
