@@ -1,0 +1,8 @@
+class Solution:
+    def segregate0and1(self, arr):
+        # code here
+        ptr=0
+        for i in range(len(arr)):
+            if arr[i]==0:
+                arr[ptr],arr[i]=arr[i],arr[ptr]
+                ptr+=1
