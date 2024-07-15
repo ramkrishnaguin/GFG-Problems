@@ -1,0 +1,17 @@
+class Solution:
+    def smallestNumber(self, s, d):
+        # code here
+        maxv=9*d
+        if s>maxv: return -1
+        ans=""
+        s-=1
+        for i in range(0,d-1):
+            if s>=9:
+               ans+=str(9)
+               s-=9
+            else:
+                ans+=str(s)
+                s=0
+        ans+=str(s+1)
+        ans=ans[::-1]
+        return ans
