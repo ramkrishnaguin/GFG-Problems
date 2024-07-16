@@ -1,0 +1,9 @@
+class Solution:
+	def printString(self, s, ch, count):
+		# code here
+		i,n=0,len(s)
+        while i<n and count:
+            if s[i]==ch:
+                count-=1
+            i+=1
+        return s[i:]
