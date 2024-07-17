@@ -1,0 +1,12 @@
+class Solution:
+    #Function to construct binary tree from parent array.
+    def createTree(self,parent):
+        # your code here
+        m = {}
+        for c, p in enumerate(parent):
+            np = m.setdefault(p, Node(p))
+            if np.left is None:
+                np.left = m.setdefault(c, Node(c))
+            else:
+                np.right = m.setdefault(c, Node(c))
+        return m[-1].left
