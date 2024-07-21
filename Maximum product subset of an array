@@ -1,0 +1,17 @@
+class Solution:
+    def findMaxProduct(self, arr):
+        # Write your code here
+        mn=float('inf')
+        neg=False
+        ret=1
+        for i in arr:
+            if i==0:
+                continue
+            if i<0:
+                i=-i
+                mn=min(mn,i)
+                neg=not neg
+            ret=(ret*i)%(10**9+7)
+        if neg:
+            ret=(ret//mn)%(10**9+7)
+        return ret
