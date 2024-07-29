@@ -1,0 +1,15 @@
+class Solution:
+
+	def rowWithMax1s(self,arr):
+		# code here
+		n,m=len(arr),len(arr[0])
+		ans,row=0,-1
+		for i in range(n):
+		    curr=0
+		    for j in range(m):
+		        if arr[i][j]==1:
+		            curr=m-j
+		            if curr>ans or row==-1:
+		                ans,row=curr,i
+		            break
+	    return row
