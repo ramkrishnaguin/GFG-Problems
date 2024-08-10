@@ -1,0 +1,19 @@
+class Solution:
+    
+    #Function to rotate a linked list.
+    def rotate(self, head, k):
+        # code here
+        arr = []
+       
+#appending data from the linked list to the array         
+        while head:
+            arr.append(head.data)
+            head = head.next
+        x = len(arr) 
+#storing the elements in res with left shift--
+        res= [0]*x
+        for i in range(x):
+            res[(i-k)%x] = arr[i]
+#printing res 
+        for i in res:
+            print(i,end=" ")
