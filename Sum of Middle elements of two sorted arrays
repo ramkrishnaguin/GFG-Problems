@@ -1,0 +1,14 @@
+class Solution:
+    def sum_of_middle_elements(self, arr1, arr2):
+        # code here
+        arr = arr1 + arr2
+        temp = sorted(arr)
+        low = 0
+        mid = 0
+        high = len(temp)
+        if high % 2 == 0:
+            mid = (low+high) // 2 
+            res = (temp[mid] + temp[mid - 1])
+            return res
+        else:
+            pass
