@@ -1,0 +1,32 @@
+class Solution:
+    def addOne(self,head):
+        #Returns new head of linked List.
+        flag=0
+        prev,cur=None,head
+        while cur:
+            temp=cur.next
+            cur.next=prev
+            prev=cur
+            cur=temp
+        follow,i=None,0
+        hd=prev
+        while prev:
+            follow=prev
+            if i==0:
+                temp=(prev.data+1)
+                prev.data=(prev.data+1)%10
+            else:
+                temp=(prev.data+flag)
+                prev.data=(prev.data+flag)%10
+            flag=temp//10
+            i+=1
+            prev=prev.next
+        if flag:
+            follow.next=Node(1)
+        prev=None
+        while hd:
+            temp=hd.next
+            hd.next=prev
+            prev=hd
+            hd=temp
+        return prev
