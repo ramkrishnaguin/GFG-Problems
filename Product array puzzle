@@ -1,0 +1,13 @@
+class Solution:
+    def productExceptSelf(self, nums):
+        #code here
+        left=1
+        right=1
+        ans=[1]*len(nums)
+        for i in range(len(nums)):
+            ans[i]=left
+            left=left*nums[i]
+        for j in range(len(nums)-1, -1, -1):
+            ans[j]=ans[j]*right
+            right=right*nums[j]
+        return ans
