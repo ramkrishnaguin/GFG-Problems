@@ -1,0 +1,13 @@
+class Solution:
+    def canSplit(self, arr):
+        #code here
+        left=0
+        right=sum(arr)
+        if right&1:
+            return False 
+        for i in arr:
+            left+=i
+            right-=i
+            if left==right:
+                return True
+        return False
