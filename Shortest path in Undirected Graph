@@ -1,0 +1,25 @@
+class Solution:
+    def shortestPath(self, edges, n, m, src):
+        # code here
+        adj=[[] for i in range(n)]
+        for u,v in edges:
+            adj[u].append(v)
+            adj[v].append(u)
+
+        dist=[float("inf")]*n
+        dist[src]=0
+        q=[]
+        q.append([src, 0])
+        while q:
+            node, weight=q.pop(0)
+            for u in adj[node]:
+                mindis=min(dist[node]+1, dist[u])
+                if dist[u]>mindis:
+                    dist[u]=mindis
+                    q.append([u, dist[u]])
+        
+        for i in range(n):
+            if dist[i]==float("inf"):
+                dist[i]=-1
+
+        return dist
