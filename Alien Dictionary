@@ -1,0 +1,41 @@
+class Solution:
+    def findOrder(self,alien_dict, N, K):
+    # code here
+        def toposort(V, adj):
+            indegree=[0]*V
+            for i in range(V):
+                for j in adj[i]:
+                    indegree[j]+=1
+            
+            # creating queue and adding elements with indegree 0
+            q=list()
+            for i in range(V):
+                if indegree[i]==0:
+                    q.append(i)
+            
+            topo=list()
+            while q:
+                value=q.pop(0)
+                topo.append(value)
+                for i in adj[value]:
+                    indegree[i]-=1
+                    if indegree[i]==0:
+                        q.append(i)
+            return topo
+        
+        
+        adj=[[] for x in range(K)]
+        for i in range(N-1):
+            s1=alien_dict[i]
+            s2=alien_dict[i+1]
+            r=min(len(s1),len(s2))
+            for j in range(r):
+                if s1[j]!=s2[j]:
+                    adj[ord(s1[j])-97].append(ord(s2[j])-97)
+                    break
+        
+        topo=toposort(K,adj)
+        ans=list()
+        for i in topo:
+            ans.append(chr(97+i))
+        return ans
