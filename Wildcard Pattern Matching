@@ -1,0 +1,6 @@
+import re
+class Solution:
+    def wildCard(self,pattern, string):
+        # Code here
+        p = "^" + re.sub("\*+", "[a-z]*", pattern).replace("?", "[a-z]") + "$"
+        return 1 if re.search(p, string) else 0
