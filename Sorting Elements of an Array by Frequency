@@ -1,0 +1,12 @@
+class Solution:
+   
+    #Function to sort the array according to frequency of elements.
+    def sortByFreq(self,arr):
+        #code here
+        from collections import Counter
+        d = Counter(arr)
+        d = sorted(d.items(), key=lambda x: (-x[1], x[0]))
+        ans = []
+        for k, v in d:
+            ans.extend([k]*v)
+        return ans
