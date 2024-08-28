@@ -1,0 +1,25 @@
+class Solution:
+    # Function to find the length of a loop in the linked list.
+    def countNodesInLoop(self, head):
+        #Your code here
+        slow, fast = head, head
+        while fast and fast.next:
+            fast = fast.next.next
+            slow = slow.next
+            if fast == slow:
+                break
+        
+        if not fast or not fast.next:
+            return 0
+        
+        slow = head
+        while slow != fast:
+            slow = slow.next
+            fast = fast.next
+        
+        cnt = 1
+        t = slow.next
+        while t != slow:
+            t = t.next
+            cnt += 1
+        return cnt
