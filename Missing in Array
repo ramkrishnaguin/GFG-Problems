@@ -1,0 +1,15 @@
+#User function Template for python3
+class Solution:
+    
+    # Note that the size of the array is n-1
+    def missingNumber(self, n, arr):
+        
+        # code here
+        # Calculate the expected sum of the first n numbers
+        expected_sum = n * (n + 1) // 2
+        
+        # Calculate the sum of the array
+        actual_sum = sum(arr)
+        
+        # The missing number is the difference between the expected sum and the actual sum
+        return expected_sum - actual_sum
