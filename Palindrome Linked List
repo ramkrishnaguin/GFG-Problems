@@ -1,0 +1,16 @@
+class Solution:
+    def isPalindrome(self, head):
+        #code here
+        slow,fast = head,head.next
+        while fast and fast.next: slow,fast = slow.next,fast.next.next
+        slow = slow.next
+        prev = None
+        while slow: 
+            nxt = slow.next
+            slow.next = prev
+            prev = slow
+            slow = nxt
+        while prev: 
+            if prev.data != head.data: return False
+            prev,head = prev.next,head.next
+        return True
