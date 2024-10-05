@@ -1,0 +1,12 @@
+class Solution:
+    def findSmallest(self, arr):
+        # code here
+        arr.sort()
+        smallest_unreachable_sum = 1
+        
+        for num in arr:
+            if num > smallest_unreachable_sum:
+                break
+            
+            smallest_unreachable_sum += num
+        return smallest_unreachable_sum
