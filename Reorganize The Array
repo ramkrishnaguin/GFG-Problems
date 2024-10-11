@@ -1,0 +1,8 @@
+n = len(arr)
+        new_arr = [-1] * n
+        
+        for i in arr:
+            if 0 <= i < n:
+                new_arr[i] = i
+                
+        return new_arr
