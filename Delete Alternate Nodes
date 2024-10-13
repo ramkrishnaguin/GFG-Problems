@@ -1,0 +1,7 @@
+class Solution:
+    def deleteAlt(self, head):
+        # code here
+        while head and head.next is not None:
+            head.next = head.next.next
+            head = head.next
+        return head
