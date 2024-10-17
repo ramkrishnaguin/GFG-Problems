@@ -1,0 +1,20 @@
+class Solution:
+    def alternatingSplitList(self, head):
+        #Your code here
+        res = []
+        temp = head
+        r, s = Node(0), Node(0)
+        a, b = r, s
+        flag = 1
+        while temp:
+            newNode = Node(temp.data)
+            if flag:
+                a.next = newNode
+                a = newNode
+                flag = 0
+            else:
+                b.next = newNode
+                b = newNode
+                flag = 1
+            temp = temp.next
+        return [r.next, s.next]
