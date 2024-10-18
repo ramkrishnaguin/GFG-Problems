@@ -1,0 +1,8 @@
+class Solution:
+    
+    def getSingle(self,arr):
+        # code here
+        temp=arr[0]
+        for i in range(1,len(arr)):
+            temp=temp^arr[i]
+        return temp
