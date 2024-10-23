@@ -1,0 +1,15 @@
+class Solution:
+    def sumOfLastN_Nodes(self, head, n):
+        #function should return sum of last n nodes
+        sum_start = 0
+        sum_end = 0
+        count_end=0
+        start_pointer = head
+        while head!=None:
+            sum_end += head.data
+            if count_end >= n:
+                sum_start += start_pointer.data
+                start_pointer = start_pointer.next
+            head = head.next
+            count_end+=1
+        return sum_end-sum_start
