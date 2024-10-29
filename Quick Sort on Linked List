@@ -1,0 +1,22 @@
+def quickSort(head):
+    #return head after sorting
+
+    P=[]
+
+    a=head
+
+    while a:
+
+        P.append([a,a.data])
+
+        a=a.next
+
+    P.sort(key=lambda x:x[1])
+
+    for i in range(len(P)-1):
+
+        P[i][0].next=P[i+1][0]
+
+    P[len(P)-1][0].next=None
+
+    return P[0][0]
