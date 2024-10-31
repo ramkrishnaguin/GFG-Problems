@@ -1,0 +1,22 @@
+class Solution:
+    def sortedInsert(self, head, x):
+        node=Node(x)
+        dummy=Node(-float('inf'))
+        dummy.next=head
+        head.prev=dummy
+        cur=dummy
+        while cur:
+            if cur.next and cur.next.data>=x:
+                node.next=cur.next
+                cur.next=node
+                node.next.prev=node
+                node.prev=cur
+                break
+            prv=cur
+            cur=cur.next
+        if not cur:
+            prv.next=node
+            node.prev=prv
+        nhead=dummy.next
+        nhead.prev=None
+        return nhead
