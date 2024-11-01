@@ -1,0 +1,9 @@
+class Solution:
+    def maxSum(self,arr):
+        # code here
+        arr.sort()
+        n = len(arr)
+        s = 0
+        for i in range(n):
+            s += abs(arr[i]-arr[n-1-i])
+        return s
