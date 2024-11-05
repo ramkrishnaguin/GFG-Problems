@@ -1,0 +1,6 @@
+def rotate(mat):
+    transposed_mat = [list(row) for row in zip(*matrix)]
+    for i in range(len(mat)):
+        mat[i] = transposed_mat[i]
+    for i in range(len(mat)):
+        mat[i].reverse()
