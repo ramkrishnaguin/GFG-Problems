@@ -1,0 +1,20 @@
+#User function Template for python3
+class Solution:
+
+	# Function to find maximum
+	# product subarray
+	def maxProduct(self,arr):
+		# code here
+		maxi=-10000000
+        prefix=1
+        suffix=1
+        n=len(arr)
+        for i in range(0,len(arr)):
+            
+            if(prefix==0): prefix=1;
+            if(suffix==0): suffix=1;
+            
+            prefix*=arr[i];
+            suffix*=arr[n-i-1];
+            maxi = max(maxi, prefix, suffix)
+        return maxi;
