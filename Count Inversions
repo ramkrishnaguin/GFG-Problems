@@ -1,0 +1,58 @@
+class Solution:
+    # Function to count inversions in the array.
+    def inversionCount(self, arr):
+        # Helper function to merge two halves and count inversions.
+        def merge_and_count(arr, temp, left, mid, right):
+            i = left    # Starting index for left subarray
+            j = mid + 1 # Starting index for right subarray
+            k = left    # Starting index to place sorted elements in temp array
+            inv_count = 0
+            
+            # Traverse both arrays and copy the smaller element to temp.
+            while i <= mid and j <= right:
+                if arr[i] <= arr[j]:
+                    temp[k] = arr[i]
+                    i += 1
+                else:
+                    # There are mid - i inversions, as arr[i] > arr[j]
+                    temp[k] = arr[j]
+                    inv_count += (mid - i + 1)
+                    j += 1
+                k += 1
+            
+            # Copy remaining elements of left subarray, if any.
+            while i <= mid:
+                temp[k] = arr[i]
+                i += 1
+                k += 1
+            
+            # Copy remaining elements of right subarray, if any.
+            while j <= right:
+                temp[k] = arr[j]
+                j += 1
+                k += 1
+            
+            # Copy sorted subarray into the original array.
+            for i in range(left, right + 1):
+                arr[i] = temp[i]
+            
+            return inv_count
+        
+        # Helper function for merge sort and inversion count.
+        def merge_sort_and_count(arr, temp, left, right):
+            inv_count = 0
+            if left < right:
+                mid = (left + right) // 2
+                
+                # Count inversions in left subarray
+                inv_count += merge_sort_and_count(arr, temp, left, mid)
+                # Count inversions in right subarray
+                inv_count += merge_sort_and_count(arr, temp, mid + 1, right)
+                # Count split inversions
+                inv_count += merge_and_count(arr, temp, left, mid, right)
+            
+            return inv_count
+        
+        n = len(arr)
+        temp = [0] * n
+        return merge_sort_and_count(arr, temp, 0, n - 1)
