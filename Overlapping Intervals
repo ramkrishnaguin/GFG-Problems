@@ -1,0 +1,15 @@
+class Solution:
+	def mergeOverlap(self, arr):
+		#Code here
+		arr.sort()
+        ans=[]
+        for i in arr:
+            if not ans:
+                ans.append(i)
+            else:
+                if ans[-1][-1]>=i[0]:
+                    if ans[-1][-1]<=i[-1]:
+                        ans[-1][-1]=i[-1]
+                else:
+                    ans.append(i)
+        return ans
