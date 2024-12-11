@@ -1,0 +1,6 @@
+class Solution:
+    def mergeArrays(self, a, b):
+        # code here
+        merged = sorted(a + b)
+        a[:] = merged[:len(a)]
+        b[:] = merged[len(a):]
