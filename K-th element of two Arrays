@@ -1,0 +1,7 @@
+class Solution:
+
+    def kthElement(self, a, b, k):
+        c = a+b
+        c = sorted(c)
+        # print(c)
+        return c[k-1]
