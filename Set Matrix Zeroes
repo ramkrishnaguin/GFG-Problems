@@ -1,0 +1,18 @@
+#User function Template for python3
+class Solution:
+    def setMatrixZeroes(self, mat):
+        n, m = len(mat), len(mat[0])
+        r, c = set(), set()
+        # Search row and column having zero and add to the corresponding set 
+        for i in range(n):
+            for j in range(m):
+                if mat[i][j]==0:
+                    r.add(i)
+                    c.add(j)
+        # if row number is in set r, make all the columns of that row '0'              
+        for r_idx in r:
+            mat[r_idx][:] = [0]*m
+        # if column number is in set c, make all the rows of that column '0' 
+        for c_idx in c:
+            for i in range(n):
+                mat[i][c_idx]=0
