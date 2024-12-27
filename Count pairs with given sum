@@ -1,0 +1,12 @@
+class Solution:
+    #Complete the below function
+    def countPairs(self,arr, target):
+        #Your code here
+        d = {}
+        count = 0
+        for i in arr:
+            complement = target - i
+            if complement in d:
+                count += d[complement]
+            d[i] = d.get(i, 0) + 1
+        return count
