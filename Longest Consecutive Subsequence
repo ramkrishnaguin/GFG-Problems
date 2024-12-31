@@ -1,0 +1,14 @@
+class Solution:
+    # arr[] : the input array
+    #Function to return length of longest subsequence of consecutive integers.
+    def longestConsecutive(self,arr):
+        #code here
+        h,ans=set(arr),0
+        for i in arr:
+            if i-1 in h: continue 
+            ele,curr=i,0
+            while ele in h:
+                ele+=1
+                curr+=1
+            ans=max(ans,curr)
+        return ans
