@@ -1,0 +1,13 @@
+from collections import defaultdict
+class Solution:
+
+    def anagrams(self, arr):
+        n = len(arr)
+        hashMap = {}
+        
+        for word in arr:
+            s1 = "".join(sorted(word))
+            if s1 not in hashMap:
+                hashMap[s1] = []
+            hashMap[s1].append(word)
+        return list(hashMap.values())
