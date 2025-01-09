@@ -1,0 +1,29 @@
+class Solution:
+    def subarraySum(self, arr, target):
+        # code here
+        n = len(arr)
+        res = [-1, -1]
+        s = 0
+        i, j = 0, 0
+        while(i <= j and j < n):
+            if s == target:
+                res[0] = i + 1
+                res[1] = j
+                return res
+            elif s < target:
+                s += arr[j]
+                j += 1
+            else:
+                s -= arr[i]
+                i += 1
+        if s > target:
+            while(s > target):
+                s -= arr[i]
+                i += 1
+            if s == target:
+                return [i+1, n]
+            else:
+                return [-1]
+        elif s == target:
+            return [i+1, n]
+        return [-1]
