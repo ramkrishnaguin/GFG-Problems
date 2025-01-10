@@ -1,0 +1,9 @@
+
+class Solution:
+    def countDistinct(self, arr, k):
+        # Code here
+        ans = []
+        for i in range(len(arr)-k+1):
+            #print(set(arr[i:k]), i, arr[i:i+k])
+            ans.append(len(set(arr[i:i+k])))
+        return ans
