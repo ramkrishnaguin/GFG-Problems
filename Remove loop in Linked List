@@ -1,0 +1,32 @@
+class Solution:
+    #Function to remove a loop in the linked list.
+    def removeLoop(self, head):
+        # code here
+        fast = head
+        slow = head
+        is_loop = False
+        prev = None
+        
+        while fast and fast.next:
+            prev = slow
+            slow = slow.next
+            fast = fast.next.next
+            
+            if fast==slow:
+                is_loop = True
+                break
+        
+        if not is_loop:
+            return head
+        if head == fast:
+            prev.next = None
+            return head
+        slow = head
+        while slow!=fast:
+            prev = fast
+            slow = slow.next
+            fast = fast.next
+            
+        prev.next = None
+        
+        return head
