@@ -1,0 +1,49 @@
+class Solution:
+    def boundaryTraversal(self, root):
+        # Code here
+        def isLeaf(root):
+            return not root.right and not root.left
+        def left(root,res):
+            curr=root.left
+            while(curr):
+                if not isLeaf(curr):
+                    res.append(curr.data)
+                if curr.left:
+                    curr=curr.left
+                else:
+                    curr=curr.right
+        
+                    
+            
+        def right(root,res):
+            temp=[]
+            curr=root.right
+            while(curr):
+                if not isLeaf(curr):
+                    temp.append(curr.data)
+                if curr.right:
+                    curr=curr.right
+                else:
+                    curr=curr.left
+            for i in range(len(temp)-1,-1,-1):
+                res.append(temp[i])
+                
+            
+        def leaves(root,res):
+            if isLeaf(root):
+                res.append(root.data)
+                return
+            if root.left:
+                leaves(root.left,res)
+            if root.right:
+                leaves(root.right,res)
+            
+        res=[]
+        if root:
+            res.append(root.data)
+        if not isLeaf(root):
+            left(root,res)
+            leaves(root,res)
+            right(root,res)
+        
+        return res
