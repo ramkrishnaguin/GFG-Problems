@@ -1,0 +1,25 @@
+class Solution:
+    def __init__(self):
+        self.count = 0
+        
+    def sumK(self,root,k):
+        dic = {0:1}
+        
+        def func(root, k, dic, Sum):
+            
+            if root == None: return 
+            Sum += root.data
+            
+            if (Sum-k) in dic:
+                self.count += dic[Sum-k]
+            dic[Sum] = 1 + dic.get(Sum,0)
+            
+            #Traverse to the LEFT and RIGHT side
+            func(root.left, k, dic, Sum)
+            func(root.right, k, dic, Sum)
+            #to remove the node which we are not going to visit anymore
+            dic[Sum] -= 1
+            
+            
+        func(root, k, dic, 0)
+        return self.count
