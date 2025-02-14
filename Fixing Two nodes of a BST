@@ -1,0 +1,19 @@
+def correctBST(self, root):
+        ans=[]
+        def find(root):
+            if root:
+                find(root.left)
+                ans.append(root)
+                find(root.right)
+            return
+        find(root)
+
+        a=[]
+        for i in range(1,len(ans)):
+            if ans[i-1].data>ans[i].data:
+                if not a:
+                    a.append(ans[i])
+                    a.append(ans[i-1])
+                else:
+                    a[0]=ans[i]
+        a[0].data,a[1].data=a[1].data,a[0].data
