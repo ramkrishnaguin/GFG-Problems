@@ -1,0 +1,12 @@
+class Solution:
+    def lis(self, arr):
+        # code here
+       from bisect import bisect_left as search
+       ans=[]
+       for e in arr:
+           i = search(ans, e)
+           if i < len(ans):
+               ans[i] = e
+           else:
+               ans.append(e)
+       return len(ans)
