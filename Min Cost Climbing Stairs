@@ -1,0 +1,7 @@
+class Solution:
+    def minCostClimbingStairs(self, cost):
+        #Write your code here
+        x_0 = x_1 = 0
+        for c in cost:
+            x_0, x_1 = x_1, min(x_0, x_1) + c
+        return min(x_0, x_1)
