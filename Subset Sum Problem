@@ -1,0 +1,13 @@
+class Solution:
+    def isSubsetSum (self, arr, target):
+        arr.sort()
+        from functools import lru_cache
+        @lru_cache(None)
+        def bt(ix=len(arr)-1,sm=0):
+            nonlocal target
+            if sm==target:
+                return True
+            if ix<0 or sm>target:
+                return False
+            return bt(ix-1,sm+arr[ix]) or bt(ix-1,sm)
+        return bt()
