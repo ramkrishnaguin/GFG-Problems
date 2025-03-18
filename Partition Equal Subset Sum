@@ -1,0 +1,10 @@
+class Solution:
+    def equalPartition(self, arr):
+        # code here
+        s = sum(arr)
+        if s % 2: return False  
+        target, dp = s // 2, {0}
+        for num in arr:
+            dp |= {num + x for x in dp}
+            if target in dp: return True
+        return False
