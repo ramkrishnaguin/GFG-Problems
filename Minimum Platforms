@@ -1,0 +1,11 @@
+def minimumPlatform(self,arr,dep):
+        # code here
+        trains = sorted([(e, 0) for e in arr] + [(e, 1) for e in dep])
+        ans, platform = 0, 0
+        for _, t in trains:
+            if t == 0:
+                platform += 1
+            else:
+                platform -= 1
+            ans = max(ans, platform)
+        return ans
