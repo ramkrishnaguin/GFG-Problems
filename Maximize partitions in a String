@@ -1,0 +1,13 @@
+def maxPartitions(self , s):
+        # code here
+        pos = [0]*26
+        # keep the last index of each character
+        for i, e in enumerate(s):
+            pos[ord(e)-ord('a')] = i
+
+        running, cnt = -1, 0
+        for i, e in enumerate(s):
+            running = max(running, pos[ord(e)-ord('a')])
+            if running == i:
+                cnt += 1
+        return cnt
