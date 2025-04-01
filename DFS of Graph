@@ -1,0 +1,11 @@
+def dfs(self, adj):
+        def dfs_traversal(node):
+            seen.add(node)
+            res.append(node)
+            for i in adj[node]:
+                if i not in seen:
+                    dfs_traversal(i)
+    
+        seen, res = set(), []
+        dfs_traversal(0)
+        return res
