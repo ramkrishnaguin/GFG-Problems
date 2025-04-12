@@ -1,0 +1,11 @@
+class Solution:
+	def floodFill(self, image, sr, sc, newColor):
+		#Code here
+		old = image[sr][sc]
+        if old == newColor: return image
+        def dfs(i, j):
+            if 0 <= i < len(image) and 0 <= j < len(image[0]) and image[i][j] == old:
+                image[i][j] = newColor
+                dfs(i+1,j), dfs(i-1,j), dfs(i,j+1), dfs(i,j-1)
+        dfs(sr, sc)
+        return image
