@@ -1,0 +1,8 @@
+def findDuplicate(self, arr):
+        #code here
+        for i in range(len(arr)):
+            e = abs(arr[i])
+            if arr[e] < 0:
+                return e
+            arr[e] *= -1
+        return 0
